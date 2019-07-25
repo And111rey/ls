@@ -41,7 +41,7 @@ class CreateNote extends React.Component  {
                  <input onChange={this.handleCahgeName} value={name} />
                  <textarea onChange={this.handleCahgeText} value={content}/>
                  <button onClick={this.sendValueToLS}>Add NOTE</button>
-                 <button onClick={this.clean}>CleanLS</button>
+                 <button onClick={this.clean} className="btn btn-outline-success ">CleanLS</button>
 
              </div>
         )

@@ -1,22 +1,16 @@
 import React from 'react';
+import './showNote.css'
+import NoteItem from "./NoteItem"
 
 
-let NoteItem = ({name, content, id}) => {
-    return(
-        <div>
-            <p>{name}</p>
-            <span>{content}</span>
-        </div>
-    )
-}
 
-const  ShowNote = ({data}) =>{
+const  ShowNote = ({data, del}) =>{
     let note = data.map(({name, id, content}) => {
-        return <div>< NoteItem name={name} content={content} /></div>
+        return <div>< NoteItem del={()=>{del(id)}} name={name} content={content} /></div>
     })  
     return (
         <div>
-            <ul>
+            <ul className="list-group list">
                 {note}
             </ul>
         </div>
