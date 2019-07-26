@@ -1,8 +1,11 @@
 import React from 'react';
+import {  Route, BrowserRouter } from "react-router-dom";
 
-import Header from "./components/header"
-import CreateNote from "./components/CreateNote";
-import ShowNote from "./components/showNote";
+
+import Header from "./components/Heade/header"
+import CreateNote from "./components/CreateNote/CreateNote";
+import ShowNote from "./components/ShowNote/showNote";
+import './app.css'
 
 
 
@@ -43,17 +46,23 @@ class App extends React.Component {
       localStorage.removeItem(this.state.data[neededId].name)
     }
 
-   
+  clearListAfterClearLS = () =>{
+    this.setState({
+      data:[]
+    })
+    localStorage.clear()
+  }
      
   render() {
-    // const {data} = this.state
     console.log(this.state.data)
-    return(
-        <div>
-          < Header />
-          < CreateNote />
-          < ShowNote del={this.delItem} data={this.state.data}/>
-        </div>
+      return(
+        <BrowserRouter>
+          <div>
+              < Header />
+              <Route  path='/add'  render={() =><  CreateNote clear={this.clearListAfterClearLS} />} />
+              <Route  path='/note' render= {() => <  ShowNote del={this.delItem} data={this.state.data}/>} />
+          </div>
+        </BrowserRouter>     
     )
   }
 }

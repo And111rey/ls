@@ -1,4 +1,5 @@
 import React from 'react';
+import './createNte.css'
 
 class CreateNote extends React.Component  {
     state ={
@@ -30,18 +31,19 @@ class CreateNote extends React.Component  {
         
     };
 
-    clean = () => {
-        localStorage.clear()
+    clear = () => {
+        // localStorage.clear()
+        this.props.clear()
     }
 
     render () {
         let {name, content} = this.state;
         return (
-             <div>
-                 <input onChange={this.handleCahgeName} value={name} />
-                 <textarea onChange={this.handleCahgeText} value={content}/>
-                 <button onClick={this.sendValueToLS}>Add NOTE</button>
-                 <button onClick={this.clean} className="btn btn-outline-success ">CleanLS</button>
+             <div className="list-group">
+                 <input placeholder="name" onChange={this.handleCahgeName} value={name} />
+                 <textarea placeholder="content"  onChange={this.handleCahgeText} value={content}/>
+                 <button onClick={this.sendValueToLS} className="btn btn-outline-success ">Add NOTE</button>
+                 <button class='b1' onClick={this.clear} className="btn btn-outline-success ">Remove all from LocalStorage DB </button>
 
              </div>
         )
